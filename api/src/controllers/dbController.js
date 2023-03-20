@@ -18,7 +18,7 @@ const dbb = async () => {
       };
     });
 
-    await Country.bulkCreate(cleanApi);
+    await Country.bulkCreate(cleanApi, { ignoreDuplicates: true });
   }
   console.log("db success");
 };
