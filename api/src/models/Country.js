@@ -6,14 +6,13 @@ module.exports = (sequelize) => {
   sequelize.define(
     "country",
     {
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       id: {
         type: DataTypes.STRING,
         primaryKey: true,
-        unique: true,
+        allowNull: false,
+      },
+      name: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       flag_image: {
@@ -21,29 +20,24 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       continent: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       capitalCity: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       subregion: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       area: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       population: {
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
-      createdInDb: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
       },
     },
     { timestamps: false }

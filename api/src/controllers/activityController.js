@@ -1,13 +1,13 @@
 const { Country, Activity } = require("../db");
 const axios = require("axios");
-//const { getAllInfo } = require("../controllers/countryController");
+//const {} = require("../controllers/countryController");
 
 const createActivity = async (
   name,
   difficulty,
   duration,
   season
-  // countryId
+  //countryId
 ) => {
   if (!name || !difficulty || !duration || !season) {
     throw Error("missing data to be completed");
@@ -18,16 +18,16 @@ const createActivity = async (
     duration,
     season,
   });
-  //   return newActivity;
+  return newActivity;
 
-  //   me trae todos los countrys que ya existen, y renovados
-  //   const findCountry = await Country.findAll({
-  //     where: {
-  //       id: countryId,
-  //     },
-  //   });
-  //   await newActivity.addCountries(findCountry);
-  //   return newActivity;
+  // me trae todos los countrys que ya existen, y renovados
+  // const findCountry = await Country.findAll({
+  //   where: {
+  //     id: countryId,
+  //   },
+  // });
+  // await newActivity.addCountries(findCountry);
+  // return newActivity;
 };
 
 module.exports = {

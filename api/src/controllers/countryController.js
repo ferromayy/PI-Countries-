@@ -1,66 +1,44 @@
 const { Country, Activity } = require("../db");
 const axios = require("axios");
+const { Sequelize, Op } = require("sequelize");
 
-const getApiInfo = async () => {
-  const apiUrl = await axios.get(`https://restcountries.com/v3.1/all`);
-
-  let cleanApi = await apiUrl.data?.map((el) => {
-    return {
-      id: el.cca3,
-      name: el.name.official,
-      flag_image: el.flags.png,
-      capitalCity: el.capital ? el.capital[0] : "capitalCity not found",
-      continent: el.continents[0], //.map((e)=> {for(let i = 0; i < e.length; i = ++ ) return e[i]}),
-      subregion: el.subregion,
-      area: el.area,
-      population: el.population,
-    };
+const allCountries = async () => {
+  const allDbInfo = await Country.findAll({
+    include: Activity,
   });
-  return cleanApi;
+  return allDbInfo;
 };
 
-const getDbInfo = async () => {
-  const bdInfoo = await Country.findAll({
-    include: {
-      model: Activity,
-      attributes: ["name", "difficulty", "duration", "season"],
-      through: {
-        attributes: [],
+const CountryByName = async (name) => {
+  const byNameInfo = await Country.findAll({
+    where: {
+      name: {
+        [Op.iLike]: `%${name.toLowerCase()}%`,
       },
     },
+    include: Activity,
   });
-  console.log(bdInfoo);
-};
-
-const getAllInfo = async () => {
-  const allDbInfo = await getDbInfo();
-  const allApiInfo = await getApiInfo();
-  const allInfo = allApiInfo.concat(allDbInfo);
-  return allInfo;
-};
-const getCountriesByName = async (nameC) => {
-  const countryByName = await getAllInfo();
-  const cleanByName = await countryByName.filter((el) =>
-    el.name.toLowerCase().includes(nameC.toLowerCase())
-  );
-  if (!cleanByName.length) {
+  if (!byNameInfo.length) {
     throw Error("the user you are looking for does not exist");
   }
-  return cleanByName;
+  return byNameInfo;
 };
-const getCountriesById = async (idC) => {
-  const getCountryById = await getAllInfo();
-  const cleanById = await getCountryById.filter((el) =>
-    el.id.toLowerCase().includes(idC.toLowerCase())
-  );
-  if (!cleanById.length) {
+
+const CountryById = async (id) => {
+  const byIdInfo = await Country.findAll({
+    where: {
+      id: id.toUpperCase(),
+    },
+    include: Activity,
+  });
+  if (!byIdInfo.length) {
     throw Error("The id you are looking for does not exist");
   }
-  return cleanById;
+  return byIdInfo;
 };
 
 module.exports = {
-  getAllInfo,
-  getCountriesByName,
-  getCountriesById,
+  allCountries,
+  CountryByName,
+  CountryById,
 };
