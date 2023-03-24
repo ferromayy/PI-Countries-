@@ -5,7 +5,7 @@ import CountryCard from "../CountryCard/CountryCard";
 
 const Countries = () => {
   const dispatch = useDispatch();
-  const AllCountries = useSelector((state) => state.countries);
+  const AllCountries = useSelector((state) => state.pepitoCountry);
 
   useEffect(() => {
     dispatch(getAllCountries());
@@ -27,7 +27,7 @@ const Countries = () => {
         Volver a cargar todos los personajes
       </button>
       {AllCountries &&
-        AllCountries.map((country) => {
+        AllCountries?.map((country) => {
           return (
             <CountryCard
               img={country.flag_image}

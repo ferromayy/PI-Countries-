@@ -2,7 +2,7 @@
 import { GET_ALL_COUNTRIES } from "./actions";
 
 let initialState = {
-  countries: [],
+  pepitoCountry: [],
   countryDetail: [],
 };
 
@@ -11,8 +11,10 @@ const reducer = (state = initialState, action) => {
     case GET_ALL_COUNTRIES:
       return {
         ...state,
-        countries: action.payload,
+        pepitoCountry: action.payload,
       };
+    default:
+      return { ...state };
   }
 };
 
