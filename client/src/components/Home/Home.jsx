@@ -1,5 +1,6 @@
 import NavBar from "../NavBar/NavBar";
 import Countries from "../Countries/Countries";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Home = () => {
   return (
@@ -7,7 +8,9 @@ const Home = () => {
       <div>
         <NavBar />
       </div>
-
+      <div>
+        <SearchBar />
+      </div>
       <div>
         <Countries />
       </div>

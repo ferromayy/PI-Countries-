@@ -1,4 +1,4 @@
-const Filters = ({ handleFilter, handleFilterP }) => {
+const Filters = ({ handleFilter, handleFilterP, handleFilterC }) => {
   return (
     <div>
       <select onChange={(e) => handleFilter(e)}>
@@ -10,14 +10,15 @@ const Filters = ({ handleFilter, handleFilterP }) => {
         <option value="smallerPp">smallerPp</option>
       </select>
 
-      <select>
-        <option>Africa</option>
-        <option>North America</option>
-        <option>South America</option>
-        <option>Asia</option>
-        <option>Oceania</option>
-        <option>Europe</option>
-        <option>Antartic</option>
+      <select onChange={(e) => handleFilterC(e)}>
+        <option value="All">All</option>
+        <option value="Africa">Africa</option>
+        <option value="North America">North America</option>
+        <option value="South America">South America</option>
+        <option value="Asia">Asia</option>
+        <option value="Oceania">Oceania</option>
+        <option value="Europe">Europe</option>
+        <option value="antartic">Antartic</option>
       </select>
     </div>
   );

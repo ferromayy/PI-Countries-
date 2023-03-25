@@ -1,9 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllCountries, orderByName, orderByP } from "../../redux/actions";
+import {
+  getAllCountries,
+  orderByName,
+  orderByP,
+  filterByContinents,
+} from "../../redux/actions";
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
 import Filters from "../Filters/Filters";
+//import SearchBar from "../SearchBar/SearchBar";
 
 const Countries = () => {
   const dispatch = useDispatch();
@@ -32,12 +38,17 @@ const Countries = () => {
     setOrden(`order ${e.target.value}`);
   };
 
-  function handleFilterP(e) {
+  const handleFilterP = (e) => {
     e.preventDefault();
     dispatch(orderByP(e.target.value));
     setCurrentPage(1);
     setOrden(`Order ${e.target.value}`);
-  }
+  };
+
+  const handleFilterC = (e) => {
+    e.preventDefault(e);
+    dispatch(filterByContinents(e.target.value));
+  };
 
   useEffect(() => {
     dispatch(getAllCountries());
@@ -57,8 +68,13 @@ const Countries = () => {
           pag={pag}
         />
       </div>
+
       <div>
-        <Filters handleFilter={handleFilter} handleFilterP={handleFilterP} />
+        <Filters
+          handleFilter={handleFilter}
+          handleFilterP={handleFilterP}
+          handleFilterC={handleFilterC}
+        />
       </div>
       <button
         onClick={(e) => {
