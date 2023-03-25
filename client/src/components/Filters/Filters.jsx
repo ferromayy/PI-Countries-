@@ -1,10 +1,15 @@
-const Filters = () => {
+const Filters = ({ handleFilter, handleFilterP }) => {
   return (
     <div>
-      <select>
-        <option value="Asc">ASC</option>
-        <option value="Desc">DESC</option>
+      <select onChange={(e) => handleFilter(e)}>
+        <option value="Asc">Asc</option>
+        <option value="Desc">Desc</option>
       </select>
+      <select onChange={(e) => handleFilterP(e)}>
+        <option value="largerPp">largerPp</option>
+        <option value="smallerPp">smallerPp</option>
+      </select>
+
       <select>
         <option>Africa</option>
         <option>North America</option>
@@ -17,5 +22,4 @@ const Filters = () => {
     </div>
   );
 };
-
 export default Filters;
