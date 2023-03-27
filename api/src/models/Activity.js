@@ -15,11 +15,7 @@ module.exports = (sequelize) => {
         unique: true,
       },
       difficulty: {
-        type: DataTypes.FLOAT,
-        validate: {
-          min: 1.0,
-          max: 5,
-        },
+        type: DataTypes.STRING,
       },
       duration: {
         type: DataTypes.STRING,

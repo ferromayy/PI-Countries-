@@ -4,6 +4,7 @@ import { ORDER_BY_NAME } from "./actions";
 import { ORDER_COUNTRIES_P } from "./actions";
 import { SEARCH_BY_NAME } from "./actions";
 import { FILTER_BY_CONTINENT } from "./actions";
+import { CREATE_ACTIVITY } from "./actions";
 
 let initialState = {
   allCountries: [],
@@ -83,6 +84,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         countries: filterOrderPp,
+      };
+    case CREATE_ACTIVITY:
+      return {
+        ...state,
       };
 
     default:
