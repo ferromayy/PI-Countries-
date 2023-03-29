@@ -7,13 +7,13 @@ const {
 
 router.post("/", async (req, res) => {
   try {
-    const { name, difficulty, duration, season, id } = req.body;
+    const { name, difficulty, duration, season, countries } = req.body;
     const newActivity = await createActivity(
       name,
       difficulty,
       duration,
       season,
-      id
+      countries
     );
     res.status(200).json(newActivity);
   } catch (error) {

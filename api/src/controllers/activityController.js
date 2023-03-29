@@ -20,9 +20,7 @@ const createActivity = async (
 
   // me trae todos los countrys que ya existen, y renovados
 
-  const findCountry = await Country?.findByPk(countries);
-
-  await newActivity?.addCountries(findCountry);
+  await newActivity?.addCountries(countries);
   console.log(newActivity, "juju");
   return newActivity;
 };
