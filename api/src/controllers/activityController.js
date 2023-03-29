@@ -1,10 +1,17 @@
 const { Country, Activity } = require("../db");
 
-const createActivity = async (name, difficulty, duration, season, country) => {
+const createActivity = async (
+  name,
+  difficulty,
+  duration,
+  season,
+  countries
+) => {
   if (!name || !difficulty || !duration || !season) {
     throw Error("missing data to be completed");
   }
-  const newActivity = await Activity.create({
+
+  const newActivity = await Activity?.create({
     name,
     difficulty,
     duration,
@@ -12,12 +19,11 @@ const createActivity = async (name, difficulty, duration, season, country) => {
   });
 
   // me trae todos los countrys que ya existen, y renovados
-  const findCountry = await Country.findAll({
-    where: {
-      id: country,
-    },
-  });
-  newActivity.addCountries(findCountry);
+
+  const findCountry = await Country?.findByPk(countries);
+
+  await newActivity?.addCountries(findCountry);
+  console.log(newActivity, "juju");
   return newActivity;
 };
 
