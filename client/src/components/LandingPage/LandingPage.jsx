@@ -1,16 +1,13 @@
 import { Link } from "react-router-dom";
 import React from "react";
-
+import style from "./LandingPage.module.css";
 const LandingPage = () => {
   return (
-    <div>
-      <h1> the Countries App </h1>
-      <h2>
-        Where the Countries and activities you have been looking for all around
-        the world, are together{" "}
-      </h2>
+    <div className={style.conPrin}>
+      <h1 className={style.welcomeText}> The Countries App </h1>
+
       <Link to="/Home">
-        <button> Start</button>
+        <button className={style.boton}> Start</button>
       </Link>
     </div>
   );

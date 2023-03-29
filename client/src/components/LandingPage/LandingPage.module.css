@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  text-decoration: none;
+}
+
+.conPrin {
+  background: url("../Images/landing.png");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+}
+.welcomeText {
+  position: relative;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 80px;
+  top: 25%;
+  color: #001b48;
+  text-shadow: 2px 2px 4px #ffffff;
+  margin-top: auto;
+  margin-right: auto;
+}
+.boton {
+  padding: 1.3em 3em;
+  margin: 190px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.boton:hover {
+  background-color: #e2a300;
+  box-shadow: 0 0 20px #64440900, 0 0 40px rgb(162, 177, 162),
+    0 0 80px rgba(19, 47, 113, 0.692), 0 0 160px hwb(38 7% 75% / 0.068);
+  color: #fff;
+  transform: translateY(-7px);
+
+  /* background-color: #e2a300;
+  color: ;
+  font-weight: bolder;
+  font-size: larger; */
+}

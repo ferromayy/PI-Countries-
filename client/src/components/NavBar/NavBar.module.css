@@ -1,0 +1,56 @@
+.navBar {
+  background-color: #02457a;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  display: inline-flex;
+}
+
+.botHome {
+  padding: 1.3em 3em;
+  margin: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  right: -1050px;
+}
+
+.botHome:hover {
+  background-color: #07648f;
+  border-color: goldenrod;
+  color: antiquewhite;
+}
+
+.botAct {
+  padding: 1.3em 3em;
+  margin: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  right: -1050px;
+}
+.botAct:hover {
+  background-color: #07648f;
+  border-color: goldenrod;
+  color: antiquewhite;
+}

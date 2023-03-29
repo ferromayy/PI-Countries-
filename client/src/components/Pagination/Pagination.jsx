@@ -1,3 +1,5 @@
+import style from "./Pagination.module.css";
+
 const Pagination = ({ countriesPerPage, allCountries, pag }) => {
   const pageNumbers = [];
   const pageCountries = Math.ceil(allCountries / countriesPerPage);
@@ -9,13 +11,17 @@ const Pagination = ({ countriesPerPage, allCountries, pag }) => {
 
   return (
     <nav>
-      <ul className="pag">
+      <ul className={style.paginationUl}>
         {pageNumbers &&
           pageNumbers.map((number) => {
             return (
-              <li className="number" key={number}>
-                <span onClick={() => pag(number)}>{number} </span>
-              </li>
+              <button
+                className={style.paginationButton}
+                key={number}
+                onClick={() => pag(number)}
+              >
+                {number}
+              </button>
             );
           })}
       </ul>

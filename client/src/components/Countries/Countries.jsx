@@ -92,6 +92,7 @@ const Countries = () => {
               img={country.flag_image}
               name={country.name}
               continent={country.continent}
+              id={country.id}
             />
           );
         })}

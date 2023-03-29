@@ -5,11 +5,12 @@ import { ORDER_COUNTRIES_P } from "./actions";
 import { SEARCH_BY_NAME } from "./actions";
 import { FILTER_BY_CONTINENT } from "./actions";
 import { CREATE_ACTIVITY } from "./actions";
+import { GET_COUNTRY_DETAIL } from "./actions";
 
 let initialState = {
+  detail: [],
   allCountries: [],
   countries: [],
-  countryDetail: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -89,9 +90,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case GET_COUNTRY_DETAIL:
+      return {
+        ...state,
+        detail: action.payload,
+      };
 
     default:
       return { ...state };
   }
 };
 export default reducer;
+
+// ver de hacer try catch
+// fijarse si va con array o con objeto

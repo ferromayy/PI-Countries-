@@ -27,7 +27,7 @@ const CountryByName = async (name) => {
 const CountryById = async (id) => {
   const byIdInfo = await Country.findAll({
     where: {
-      id: id.toUpperCase(),
+      id: id,
     },
     include: Activity,
   });

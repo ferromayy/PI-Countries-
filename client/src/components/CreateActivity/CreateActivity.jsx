@@ -1,11 +1,36 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postActivity, getAllCountries } from "../../redux/actions";
+import NavBar from "../NavBar/NavBar";
+
+const validation = (input) => {
+  let errors = {};
+  let dif = Number(input.difficulty);
+  let dur = Number(input.duration);
+
+  if (!input.name) errors.name = "required space";
+  else if (/[^A-Za-z0-9 ]+/g.test(input.name))
+    errors.name = "Name can not have special characters or accents";
+
+  if (!input.difficulty) errors.difficulty = "required space";
+  else if (dif <= 0 || dif > 5) errors.difficulty = "Should be between 1 and 5";
+
+  if (!input.duration) errors.duration = "required space";
+  else if (dur <= 0 || dur > 24) errors.duration = "Should be between 1 and 24";
+
+  if (!input.season || input.season === "empty")
+    errors.season = "required space";
+
+  if (!input.countries || input.countries.length === 0)
+    errors.countries = "required space";
+
+  return errors;
+};
 
 const CreateActivity = () => {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
-
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: "",
     difficulty: "",
@@ -23,6 +48,12 @@ const CreateActivity = () => {
       ...input,
       [e.target.name]: e.target.value,
     });
+    setErrors(
+      validation({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
   };
   console.log(input);
 
@@ -40,11 +71,34 @@ const CreateActivity = () => {
         };
       }
     });
+    setErrors(
+      validation({
+        ...input,
+        [e.target.name]: [e.target.value],
+      })
+    );
+  };
+
+  const handleDelete = (e) => {
+    setInput({
+      ...input,
+      countries: input.countries.filter((con) => con !== e),
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(input);
+    if (
+      !input.name ||
+      !input.difficulty ||
+      !input.duration ||
+      !input.season ||
+      !input.countries
+    ) {
+      return alert("Complete the form correctly before submitting it");
+    }
+
     dispatch(postActivity(input));
     alert("The activity has been created");
     setInput({
@@ -58,6 +112,9 @@ const CreateActivity = () => {
 
   return (
     <div>
+      <div>
+        <NavBar />
+      </div>
       <h1>Create Activity</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
@@ -68,6 +125,7 @@ const CreateActivity = () => {
             name="name"
             onChange={(e) => handleChange(e)}
           />
+          {errors.name && <p>{errors.name}</p>}
         </div>
         <div>
           <label>Difficulty:</label>
@@ -77,6 +135,7 @@ const CreateActivity = () => {
             name="difficulty"
             onChange={(e) => handleChange(e)}
           />
+          {errors.difficulty && <p>{errors.difficulty}</p>}
         </div>
         <div>
           <label>Duration:</label>
@@ -86,6 +145,7 @@ const CreateActivity = () => {
             name="duration"
             onChange={(e) => handleChange(e)}
           />
+          {errors.duration && <p>{errors.duration}</p>}
         </div>
         <div>
           <label>Season</label>
@@ -96,6 +156,7 @@ const CreateActivity = () => {
             <option value="Winter">Winter</option>
             <option value="Spring">Spring</option>
           </select>
+          {errors.season && <p>{errors.season}</p>}
         </div>
         <div>
           <label>Select country</label>
@@ -109,7 +170,15 @@ const CreateActivity = () => {
               <option value={el.id}>{el.name}</option>
             ))}
           </select>
+          {errors.countries && <p>{errors.countries}</p>}
         </div>
+        {input.countries?.map((e) => (
+          <div>
+            <p> {e} </p>
+            <button onClick={() => handleDelete(e)}>X </button>
+          </div>
+        ))}
+
         <div>
           <ul>
             <li>{input.countries?.map((e) => e + " ,")}</li>

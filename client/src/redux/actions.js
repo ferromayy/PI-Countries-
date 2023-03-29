@@ -6,6 +6,8 @@ export const ORDER_COUNTRIES_P = "ORDER_COUNTRIES_P";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
+export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL";
+
 export const getAllCountries = () => {
   return async (dispatch) => {
     const res = await axios.get("http://localhost:3001/countries");
@@ -49,4 +51,16 @@ export const postActivity = (payload) => {
     console.log(info);
     return info;
   };
+};
+
+export const getCountryDetail = (id) => {
+  try {
+    return async (dispatch) => {
+      const json = await axios.get(`http://localhost:3001/countries/${id}`);
+      return dispatch({ type: GET_COUNTRY_DETAIL, payload: json.data });
+    };
+    // eslint-disable-next-line no-unreachable
+  } catch (error) {
+    console.log(error);
+  }
 };

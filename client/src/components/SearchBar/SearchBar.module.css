@@ -1,0 +1,40 @@
+.buscador {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.campoBuscar {
+  padding: 5px;
+  margin: 3px;
+  font-size: 15px;
+
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  color: rgb(246, 246, 246);
+  background-color: #97cadb;
+  border-radius: 5%;
+  width: 18em;
+  transition: all 0.3s ease 0s;
+}
+
+.botonBuscar {
+  width: 8%;
+  margin: 10px;
+  font-size: 20px;
+
+  font-weight: 500;
+  color: #f7f7f7;
+  background-color: #02457a;
+
+  border-radius: 50px;
+
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+.botonBuscar:hover {
+  background-color: #91c8e1;
+  border-color: rgb(237, 232, 219);
+  color: rgb(0, 0, 0);
+}
