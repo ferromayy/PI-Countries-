@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
+import style from "./CountryCard.module.css";
 
 const CountryCard = ({ img, name, continent, id }) => {
   return (
-    <div>
+    <div className={style.cardContainer}>
       <Link to={`/countries/${id}`}>
-        <button>Ver Más</button>
+        <button className={style.boton}>More</button>
       </Link>
       <h3>{name}</h3>
       <h4>{continent}</h4>
-      <img src={img} alt="not received" />
+      <div>
+        <img className={style.imageContainer} src={img} alt="not received" />
+      </div>
     </div>
   );
 };

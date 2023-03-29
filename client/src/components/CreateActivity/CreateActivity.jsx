@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postActivity, getAllCountries } from "../../redux/actions";
 import NavBar from "../NavBar/NavBar";
+import style from "./CreateActivity.module.css";
 
 const validation = (input) => {
   let errors = {};
@@ -115,79 +116,88 @@ const CreateActivity = () => {
       <div>
         <NavBar />
       </div>
-      <h1>Create Activity</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={input.name}
-            name="name"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.name && <p>{errors.name}</p>}
-        </div>
-        <div>
-          <label>Difficulty:</label>
-          <input
-            type="number"
-            value={input.difficulty}
-            name="difficulty"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.difficulty && <p>{errors.difficulty}</p>}
-        </div>
-        <div>
-          <label>Duration:</label>
-          <input
-            type="number"
-            value={input.duration}
-            name="duration"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.duration && <p>{errors.duration}</p>}
-        </div>
-        <div>
-          <label>Season</label>
-          <select name="season" id="season" onChange={(e) => handleSelect(e)}>
-            <option value="empty"></option>
-            <option value="Summer">Summer</option>
-            <option value="Fall">Fall</option>
-            <option value="Winter">Winter</option>
-            <option value="Spring">Spring</option>
-          </select>
-          {errors.season && <p>{errors.season}</p>}
-        </div>
-        <div>
-          <label>Select country</label>
-          <select
-            name="countries"
-            id="countries"
-            onChange={(e) => handleSelect(e)}
-          >
-            <option value="empty"></option>
-            {countries?.map((el) => (
-              <option value={el.id}>{el.name}</option>
-            ))}
-          </select>
-          {errors.countries && <p>{errors.countries}</p>}
-        </div>
-        {input.countries?.map((e) => (
+      <div className={style.contenedorform}>
+        <h1 className={style.titulo}>Create Activity</h1>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div>
-            <p> {e} </p>
-            <button onClick={() => handleDelete(e)}>X </button>
+            <label className={style.campos}>Name:</label>
+            <input
+              className={style.inputs}
+              type="text"
+              value={input.name}
+              name="name"
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.name && <p>{errors.name}</p>}
           </div>
-        ))}
-
-        <div>
-          <ul>
-            <li>{input.countries?.map((e) => e + " ,")}</li>
-          </ul>
-        </div>
-        <div>
-          <button type="submit">Create Activity </button>
-        </div>
-      </form>
+          <div>
+            <label className={style.campos}>Difficulty:</label>
+            <input
+              className={style.inputs}
+              type="number"
+              value={input.difficulty}
+              name="difficulty"
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.difficulty && <p>{errors.difficulty}</p>}
+          </div>
+          <div>
+            <label className={style.campos}>Duration:</label>
+            <input
+              className={style.inputs}
+              type="number"
+              value={input.duration}
+              name="duration"
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.duration && <p>{errors.duration}</p>}
+          </div>
+          <div>
+            <label className={style.campos}>Season</label>
+            <select
+              className={style.inputs}
+              name="season"
+              id="season"
+              onChange={(e) => handleSelect(e)}
+            >
+              <option value="empty"></option>
+              <option value="Summer">Summer</option>
+              <option value="Fall">Fall</option>
+              <option value="Winter">Winter</option>
+              <option value="Spring">Spring</option>
+            </select>
+            {errors.season && <p>{errors.season}</p>}
+          </div>
+          <div>
+            <label className={style.campos}>Select country</label>
+            <select
+              className={style.inputs}
+              name="countries"
+              id="countries"
+              onChange={(e) => handleSelect(e)}
+            >
+              <option value="empty"></option>
+              {countries?.map((el) => (
+                <option value={el.id}>{el.name}</option>
+              ))}
+            </select>
+            {errors.countries && <p>{errors.countries}</p>}
+          </div>
+          {input.countries?.map((e) => (
+            <div>
+              <p> {e} </p>
+              <button className={style.botelim} onClick={() => handleDelete(e)}>
+                x{" "}
+              </button>
+            </div>
+          ))}
+          <div>
+            <button className={style.botonCreate} type="submit">
+              Create Activity{" "}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

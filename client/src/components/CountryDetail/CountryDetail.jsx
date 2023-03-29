@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import React from "react";
+import style from "./CountryDetail.module.css";
 
 const CountryDetail = () => {
   const { id } = useParams();
@@ -21,20 +22,20 @@ const CountryDetail = () => {
         <NavBar />
       </div>
       <div>
-        <h2>country Detail:</h2>
+        <h2 className={style.detailText}>country Detail</h2>
       </div>
 
       <div>
         {
-          <div>
+          <div className={style.cardDetail}>
             <h2>{country[0]?.name}</h2>
             <img src={country[0]?.flag_image} alt="could not found the image" />
             <h4>{country[0]?.id}</h4>
             <h4>{country[0]?.capitalcity}</h4>
-            <h4>Continent:{country[0]?.continent}</h4>
-            <h4>Subregion:{country[0]?.subregion}</h4>
-            <h4>Area:{country[0]?.area}</h4>
-            <h4>Population:{country[0]?.population}</h4>
+            <h4>CONTINENT: {country[0]?.continent}</h4>
+            <h4>SUBREGION: {country[0]?.subregion}</h4>
+            <h4>AREA: {country[0]?.area}</h4>
+            <h4>POPULATION: {country[0]?.population}</h4>
           </div>
         }
       </div>

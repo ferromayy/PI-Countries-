@@ -1,0 +1,26 @@
+.cardDetail {
+  font-weight: 500;
+  letter-spacing: 1px;
+  background-color: rgb(235, 174, 19);
+  display: inline-block;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.3s;
+  margin-left: 1ex;
+  margin-top: 4ex;
+  margin-bottom: 3ex;
+  border-radius: 20px;
+  width: 400px;
+  height: 550px;
+}
+.detailText {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 40px;
+  top: 25%;
+  color: rgb(17, 16, 14);
+  margin-top: 30px;
+  margin-right: auto;
+}

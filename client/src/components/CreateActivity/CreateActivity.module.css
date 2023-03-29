@@ -1,0 +1,66 @@
+.campos {
+  color: rgb(16, 17, 18);
+  text-align: right;
+  font-size: large;
+  margin: 5px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.inputs {
+  background-color: rgb(235, 174, 19);
+  border-color: rgba(239, 236, 216, 0.69);
+  border-radius: 4px;
+  width: 250px;
+  font-size: medium;
+  color: rgb(10, 10, 10);
+  margin-top: 5px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.contenedorform {
+  border-radius: 3%;
+  margin: 40px;
+  background-color: rgba(239, 236, 216, 0.69);
+  min-height: 400px;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 35px;
+  display: inline-block;
+}
+
+.botonCreate {
+  padding: 3px;
+  margin: 3px;
+  background-color: #02457a;
+  border-color: #02457a;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  border-radius: 20%;
+  height: 2em;
+  width: 15em;
+  color: rgb(246, 246, 246);
+}
+.botonCreate:hover {
+  background-color: wheat;
+  color: #000;
+  scale: 105%;
+}
+
+.titulo {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.botelim {
+  font-size: small;
+  font-weight: bold;
+  background-color: #018abe;
+  border-radius: 30%;
+  border-width: 0ch;
+  height: fit-content;
+  width: fit-content;
+}

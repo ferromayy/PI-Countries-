@@ -9,6 +9,7 @@ import {
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
 import Filters from "../Filters/Filters";
+import style from "./Countries.module.css";
 //import SearchBar from "../SearchBar/SearchBar";
 
 const Countries = () => {
@@ -76,14 +77,17 @@ const Countries = () => {
           handleFilterC={handleFilterC}
         />
       </div>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        {" "}
-        Volver a cargar todos los personajes
-      </button>
+      <div>
+        <button
+          className={style.botonAll}
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          {" "}
+          Charge all countries
+        </button>
+      </div>
 
       {currentCountries &&
         currentCountries?.map((country) => {

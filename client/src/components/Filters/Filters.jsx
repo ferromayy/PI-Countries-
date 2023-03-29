@@ -1,16 +1,23 @@
+import style from "./Filters.module.css";
 const Filters = ({ handleFilter, handleFilterP, handleFilterC }) => {
   return (
     <div>
-      <select onChange={(e) => handleFilter(e)}>
-        <option value="Asc">Asc</option>
-        <option value="Desc">Desc</option>
+      <select className={style.botonAsc} onChange={(e) => handleFilter(e)}>
+        <option value="Asc">A-Z</option>
+        <option value="Desc">Z-A</option>
       </select>
-      <select onChange={(e) => handleFilterP(e)}>
+      <select
+        className={style.botonLargerPp}
+        onChange={(e) => handleFilterP(e)}
+      >
         <option value="largerPp">largerPp</option>
         <option value="smallerPp">smallerPp</option>
       </select>
 
-      <select onChange={(e) => handleFilterC(e)}>
+      <select
+        className={style.botonContinents}
+        onChange={(e) => handleFilterC(e)}
+      >
         <option value="All">All</option>
         <option value="Africa">Africa</option>
         <option value="North America">North America</option>
