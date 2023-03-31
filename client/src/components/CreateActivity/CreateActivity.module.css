@@ -6,12 +6,15 @@
   font-weight: 500;
   letter-spacing: 1px;
 }
+.centrar {
+  display: flex;
+  justify-content: center;
+}
 
 .inputs {
   background-color: rgb(235, 174, 19);
-  border-color: rgba(239, 236, 216, 0.69);
   border-radius: 4px;
-  width: 250px;
+  width: 200px;
   font-size: medium;
   color: rgb(10, 10, 10);
   margin-top: 5px;
@@ -23,12 +26,11 @@
   border-radius: 3%;
   margin: 40px;
   background-color: rgba(239, 236, 216, 0.69);
-  min-height: 400px;
-  width: fit-content;
-  justify-content: center;
+  height: 600px;
+
   align-items: center;
   padding: 35px;
-  display: inline-block;
+  width: 400px;
 }
 
 .botonCreate {
@@ -58,9 +60,59 @@
 .botelim {
   font-size: small;
   font-weight: bold;
-  background-color: #018abe;
+  background-color: wheat;
   border-radius: 30%;
   border-width: 0ch;
   height: fit-content;
   width: fit-content;
 }
+
+.divV {
+  border: rgb(10, 10, 10) solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  justify-content: center;
+  align-items: center;
+}
+
+/* .contenedorForm {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  align-items: center;
+}
+
+.divV {
+  background-color: wheat;
+  width: 450px;
+  margin: 50px;
+  height: 550px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.inputs {
+  border: 1px solid green;
+  font-size: medium;
+  display: flex;
+  justify-content: left 20%;
+}
+.inputs input {
+  width: 60%;
+  padding: 3px;
+}
+
+.selects {
+  border: 1px solid yellow;
+}
+
+.alineadorInputs {
+  border: 1px solid green;
+} */

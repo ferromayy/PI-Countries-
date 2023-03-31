@@ -7,6 +7,8 @@ export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
 export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL";
+export const GET_ALL_ACTIVITIES = "GET_ALL_ACTIVITIES";
+export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
 
 export const getAllCountries = () => {
   return async (dispatch) => {
@@ -63,4 +65,16 @@ export const getCountryDetail = (id) => {
   } catch (error) {
     console.log(error);
   }
+};
+export const getAllActivities = () => {
+  return async (dispatch) => {
+    const res = await axios.get("http://localhost:3001/activities");
+    return dispatch({ type: GET_ALL_ACTIVITIES, payload: res.data });
+  };
+};
+export const filterByActivity = (payload) => {
+  return {
+    type: FILTER_BY_ACTIVITY,
+    payload,
+  };
 };

@@ -6,11 +6,12 @@ import style from "./CreateActivity.module.css";
 
 const validation = (input) => {
   let errors = {};
+
   let dif = Number(input.difficulty);
   let dur = Number(input.duration);
 
   if (!input.name) errors.name = "required space";
-  else if (/[^A-Za-z0-9 ]+/g.test(input.name))
+  if (!/^[a-zA-Z]+$/.test(input.name))
     errors.name = "Name can not have special characters or accents";
 
   if (!input.difficulty) errors.difficulty = "required space";
@@ -63,7 +64,7 @@ const CreateActivity = () => {
       if (e.target.name === "countries") {
         return {
           ...input,
-          countries: [...input.countries, e.target.value],
+          countries: [...new Set([...input.countries, e.target.value])],
         };
       } else {
         return {
@@ -75,7 +76,7 @@ const CreateActivity = () => {
     setErrors(
       validation({
         ...input,
-        [e.target.name]: [e.target.value],
+        [e.target.name]: e.target.value,
       })
     );
   };
@@ -116,87 +117,101 @@ const CreateActivity = () => {
       <div>
         <NavBar />
       </div>
-      <div className={style.contenedorform}>
-        <h1 className={style.titulo}>Create Activity</h1>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <div>
-            <label className={style.campos}>Name:</label>
-            <input
-              className={style.inputs}
-              type="text"
-              value={input.name}
-              name="name"
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.name && <p>{errors.name}</p>}
-          </div>
-          <div>
-            <label className={style.campos}>Difficulty:</label>
-            <input
-              className={style.inputs}
-              type="number"
-              value={input.difficulty}
-              name="difficulty"
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.difficulty && <p>{errors.difficulty}</p>}
-          </div>
-          <div>
-            <label className={style.campos}>Duration:</label>
-            <input
-              className={style.inputs}
-              type="number"
-              value={input.duration}
-              name="duration"
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.duration && <p>{errors.duration}</p>}
-          </div>
-          <div>
-            <label className={style.campos}>Season</label>
-            <select
-              className={style.inputs}
-              name="season"
-              id="season"
-              onChange={(e) => handleSelect(e)}
-            >
-              <option value="empty"></option>
-              <option value="Summer">Summer</option>
-              <option value="Fall">Fall</option>
-              <option value="Winter">Winter</option>
-              <option value="Spring">Spring</option>
-            </select>
-            {errors.season && <p>{errors.season}</p>}
-          </div>
-          <div>
-            <label className={style.campos}>Select country</label>
-            <select
-              className={style.inputs}
-              name="countries"
-              id="countries"
-              onChange={(e) => handleSelect(e)}
-            >
-              <option value="empty"></option>
-              {countries?.map((el) => (
-                <option value={el.id}>{el.name}</option>
-              ))}
-            </select>
-            {errors.countries && <p>{errors.countries}</p>}
-          </div>
-          {input.countries?.map((e) => (
+      <div className={style.centrar}>
+        <div className={style.contenedorform}>
+          <h1 className={style.titulo}>Create Activity</h1>
+
+          <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
             <div>
-              <p> {e} </p>
-              <button className={style.botelim} onClick={() => handleDelete(e)}>
-                x{" "}
+              <label className={style.campos}>Name:</label>
+              <input
+                className={style.inputs}
+                type="text"
+                value={input.name}
+                name="name"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.name && <p>{errors.name}</p>}
+            </div>
+
+            <div>
+              <label className={style.campos}>Difficulty:</label>
+              <input
+                className={style.inputs}
+                type="number"
+                value={input.difficulty}
+                name="difficulty"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.difficulty && <p>{errors.difficulty}</p>}
+            </div>
+
+            <div>
+              <label className={style.campos}>Duration:</label>
+              <input
+                className={style.inputs}
+                type="number"
+                value={input.duration}
+                name="duration"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.duration && <p>{errors.duration}</p>}
+            </div>
+
+            <div>
+              <label className={style.campos}>Season</label>
+              <select
+                className={style.inputs}
+                name="season"
+                id="season"
+                onChange={(e) => handleSelect(e)}
+              >
+                <option value="empty"></option>
+                <option value="Summer">Summer</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+                <option value="Spring">Spring</option>
+              </select>
+              {errors.season && <p>{errors.season}</p>}
+            </div>
+
+            <div>
+              <label className={style.campos}>Select country</label>
+              <select
+                className={style.inputs}
+                name="countries"
+                id="countries"
+                onChange={(e) => handleSelect(e)}
+              >
+                <option value="empty"></option>
+                {countries?.map((el) => (
+                  <option value={el.id}>{el.name}</option>
+                ))}
+              </select>
+              {errors.countries && <p>{errors.countries}</p>}
+            </div>
+
+            <div>
+              {input.countries?.map((e) => (
+                <div>
+                  <p> {e} </p>
+                  <button
+                    className={style.botelim}
+                    onClick={() => handleDelete(e)}
+                  >
+                    X{" "}
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <button className={style.botonCreate} type="submit">
+                Create Activity{" "}
               </button>
             </div>
-          ))}
-          <div>
-            <button className={style.botonCreate} type="submit">
-              Create Activity{" "}
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

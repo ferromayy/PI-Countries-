@@ -15,9 +15,9 @@
 }
 
 .imageContainer {
-  display: block;
-  max-width: 100%;
-  height: auto;
+  border: 1px solid rgb(12, 12, 12);
+  width: 210px;
+  height: 180px;
   /* position: relative;
   right: -10px;
   display: grid;

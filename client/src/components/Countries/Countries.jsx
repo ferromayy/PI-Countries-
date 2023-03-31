@@ -5,6 +5,8 @@ import {
   orderByName,
   orderByP,
   filterByContinents,
+  filterByActivity,
+  getAllActivities,
 } from "../../redux/actions";
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
@@ -15,6 +17,7 @@ import style from "./Countries.module.css";
 const Countries = () => {
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.countries);
+  const allActivities = useSelector((state) => state.activities);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [orden, setOrden] = useState("");
@@ -50,9 +53,16 @@ const Countries = () => {
     e.preventDefault(e);
     dispatch(filterByContinents(e.target.value));
   };
+  const handleFilterAct = (e) => {
+    e.preventDefault(e);
+    dispatch(filterByActivity(e.target.value));
+    setCurrentPage(1);
+    setOrden(`Order ${e.target.value}`);
+  };
 
   useEffect(() => {
     dispatch(getAllCountries());
+    dispatch(getAllActivities());
   }, [dispatch]);
 
   const handleClick = (e) => {
@@ -76,7 +86,26 @@ const Countries = () => {
           handleFilterP={handleFilterP}
           handleFilterC={handleFilterC}
         />
+        <div>
+          <button className={style.botonsito}>
+            {allActivities.length === 0 ? (
+              <p>no activities to show</p>
+            ) : (
+              <select onChange={(e) => handleFilterAct(e)}>
+                {allActivities.map((e) => (
+                  <>
+                    <option value="none">none</option>
+                    <option value={e.name} key={e.id}>
+                      {e.name}
+                    </option>
+                  </>
+                ))}
+              </select>
+            )}
+          </button>
+        </div>
       </div>
+
       <div>
         <button
           className={style.botonAll}

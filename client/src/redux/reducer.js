@@ -6,11 +6,14 @@ import { SEARCH_BY_NAME } from "./actions";
 import { FILTER_BY_CONTINENT } from "./actions";
 import { CREATE_ACTIVITY } from "./actions";
 import { GET_COUNTRY_DETAIL } from "./actions";
+import { GET_ALL_ACTIVITIES } from "./actions";
+import { FILTER_BY_ACTIVITY } from "./actions";
 
 let initialState = {
   detail: [],
   allCountries: [],
   countries: [],
+  activities: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -94,6 +97,33 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         detail: action.payload,
+      };
+    case GET_ALL_ACTIVITIES:
+      return {
+        ...state,
+        activities: action.payload,
+      };
+    case FILTER_BY_ACTIVITY:
+      let countriesAll = state.allCountries;
+      const countriess = countriesAll?.filter((el) => {
+        return el.activities.length > 0;
+      });
+      let countryA = [];
+      console.log(countriess);
+      for (let i = 0; i < countriess.length; i++) {
+        for (let j = 0; j < countriess[i].activities.length; j++) {
+          if (countriess[i].activities[j].name === action.payload) {
+            countryA.push(countriess[i]);
+          }
+        }
+      }
+      console.log(countryA, "array");
+      const final = action.payload === "none" ? countriesAll : countryA;
+      console.log(final);
+
+      return {
+        ...state,
+        countries: final,
       };
 
     default:
