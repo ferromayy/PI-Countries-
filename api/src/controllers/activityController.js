@@ -18,8 +18,6 @@ const createActivity = async (
     season,
   });
 
-  // me trae todos los countrys que ya existen, y renovados
-
   await newActivity?.addCountries(countries);
   console.log(newActivity, "juju");
   return newActivity;

@@ -205,11 +205,9 @@ const CreateActivity = () => {
               ))}
             </div>
 
-            <div>
-              <button className={style.botonCreate} type="submit">
-                Create Activity{" "}
-              </button>
-            </div>
+            <button className={style.botonCreate} type="submit">
+              Create Activity{" "}
+            </button>
           </form>
         </div>
       </div>
