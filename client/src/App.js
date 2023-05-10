@@ -4,6 +4,8 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import CreateActivity from "./components/CreateActivity/CreateActivity";
 import CountryDetail from "./components/CountryDetail/CountryDetail";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001";
 
 const App = () => {
   return (

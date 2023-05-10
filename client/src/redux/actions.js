@@ -12,7 +12,7 @@ export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
 
 export const getAllCountries = () => {
   return async (dispatch) => {
-    const res = await axios.get("http://localhost:3001/countries");
+    const res = await axios.get("/countries");
     return dispatch({ type: GET_ALL_COUNTRIES, payload: res.data });
   };
 };
@@ -40,16 +40,14 @@ export const filterByContinents = (payload) => {
 //payload es name (podria haber sido name en vez de payload)
 export const searchCountry = (payload) => {
   return async (dispatch) => {
-    const json = await axios.get(
-      "http://localhost:3001/countries?name=" + payload
-    );
+    const json = await axios.get("/countries?name=" + payload);
     return dispatch({ type: SEARCH_BY_NAME, payload: json.data });
   };
 };
 // en la ruta se pone ,payload porque quieres poner eso que te va a llegar por payload ahi
 export const postActivity = (payload) => {
   return async (dispatch) => {
-    const info = await axios.post("http://localhost:3001/activities", payload);
+    const info = await axios.post("/activities", payload);
     console.log(info);
     return info;
   };
@@ -58,7 +56,7 @@ export const postActivity = (payload) => {
 export const getCountryDetail = (id) => {
   try {
     return async (dispatch) => {
-      const json = await axios.get(`http://localhost:3001/countries/${id}`);
+      const json = await axios.get(`/countries/${id}`);
       return dispatch({ type: GET_COUNTRY_DETAIL, payload: json.data });
     };
     // eslint-disable-next-line no-unreachable
@@ -68,7 +66,7 @@ export const getCountryDetail = (id) => {
 };
 export const getAllActivities = () => {
   return async (dispatch) => {
-    const res = await axios.get("http://localhost:3001/activities");
+    const res = await axios.get("/activities");
     return dispatch({ type: GET_ALL_ACTIVITIES, payload: res.data });
   };
 };
