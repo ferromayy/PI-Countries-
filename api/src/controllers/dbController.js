@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Country } = require("../db");
-
+const { URL } = process.env;
 const dbb = async () => {
   {
     const apiUrl = await axios.get(`https://restcountries.com/v3.1/all`);
